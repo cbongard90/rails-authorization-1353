@@ -1,9 +1,10 @@
 class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: %i[ show edit update destroy ]
+  skip_before_action :authenticate_user!, only: [ :index ]
 
   # GET /restaurants
   def index
-    @restaurants = Restaurant.all
+    @restaurants = policy_scope(Restaurant)
   end
 
   # GET /restaurants/1
