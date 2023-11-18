@@ -1,6 +1,9 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>Restaurants</h1>
+<% if user_signed_in? %>
+  <%= current_user.email %>
+<% end %>
 
 <div id="restaurants">
   <% @restaurants.each do |restaurant| %>
