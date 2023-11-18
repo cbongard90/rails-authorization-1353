@@ -13,4 +13,14 @@ class RestaurantPolicy < ApplicationPolicy
   def create?
     true
   end
+
+  def update?
+    # default name to define an instance of a given policy
+    record.user == user
+  end
+
+  def destroy?
+    # default name to define an instance of a given policy
+    record.user == user
+  end
 end
