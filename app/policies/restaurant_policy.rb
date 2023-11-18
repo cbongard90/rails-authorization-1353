@@ -2,10 +2,12 @@ class RestaurantPolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve
-      scope.all
+      # scope.all
       # scope.where(user: user)
       # scope.where("name LIKE 't%'") # If users can only see restaurants starting with `t`
       # ...
+
+      user.admin? ? scope.all : scope.where(user: user)
     end
   end
 
